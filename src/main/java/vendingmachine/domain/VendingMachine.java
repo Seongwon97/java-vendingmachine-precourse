@@ -6,7 +6,7 @@ import java.util.Map;
 public class VendingMachine {
 
     Map<Coin, Integer> remainCoin = new HashMap<>();
-//    List<Product> products = new ArrayList<>();
+    Products products;
     int change;
 
     public VendingMachine(int change) {

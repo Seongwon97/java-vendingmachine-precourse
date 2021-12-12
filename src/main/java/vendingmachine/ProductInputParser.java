@@ -3,17 +3,23 @@ package vendingmachine;
 import vendingmachine.domain.Product;
 import vendingmachine.domain.Products;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static vendingmachine.Validator.*;
 
 public class ProductInputParser {
-    public void parseProduct(String input) {
+
+    public Products parseProduct(String input) {
+        Map<String, Product> productMap = new HashMap<>();
         checkEmptyInput(input);
         String[] productList = input.split(";");
         for (String productStr : productList) {
-            mappingProduct(productStr);
+            Product temp = mappingProduct(productStr);
+            productMap.put(temp.getName(), temp);
         }
 
-//        return new Products();
+        return new Products(productMap);
     }
 
     private Product mappingProduct(String productStr) {
@@ -40,7 +46,9 @@ public class ProductInputParser {
         return price;
     }
 
-    private int checkQuantity(String quantity) {
+    private int checkQuantity(String quantityStr) {
+        int quantity = checkNotString(quantityStr);
+        checkPositiveNumber(quantity);
         return 1;
     }
 }
