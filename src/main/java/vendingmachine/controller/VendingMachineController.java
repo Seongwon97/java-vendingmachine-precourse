@@ -3,6 +3,7 @@ package vendingmachine.controller;
 import camp.nextstep.edu.missionutils.Console;
 import vendingmachine.domain.VendingMachine;
 
+import static vendingmachine.Validator.checkNotString;
 import static vendingmachine.constant.Constant.ERROR_NOT_INTEGER;
 import static vendingmachine.view.InputUtils.inputInitMachineMoney;
 
@@ -22,13 +23,13 @@ public class VendingMachineController {
     private int getInitMachineMoney() {
         int inputMoney = 0;
         boolean flag = false;
-
         while (!flag) {
+            String input = inputInitMachineMoney();
             try {
-                inputMoney = Integer.parseInt(inputInitMachineMoney());
+                inputMoney = checkNotString(input);
                 flag = true;
-            } catch (NumberFormatException e) {
-                System.out.println(ERROR_NOT_INTEGER);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
 
