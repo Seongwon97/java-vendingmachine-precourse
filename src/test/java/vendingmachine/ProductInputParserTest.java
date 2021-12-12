@@ -42,7 +42,7 @@ class ProductInputParserTest {
     @Test
     void 잘못된_대괄호_테스트2() {
         // given
-        String input = "[콜라,1500,20];[사이다,1000,10]";
+        String input = "콜라,1500,20];[사이다,1000,10]";
 
         // when
         final RuntimeException exception = assertThrows(
@@ -81,4 +81,87 @@ class ProductInputParserTest {
         assertThat(exception.getMessage()).isEqualTo(ERROR_PRODUCT_NAME_BLANK);
     }
 
+    @Test
+    void 숫자가_아닌_상품가격_테스트() {
+        // given
+        String input = "[콜라,오백원,20];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_NOT_INTEGER);
+    }
+
+    @Test
+    void 음수의_상품가격_테스트() {
+        // given
+        String input = "[콜라,-1000,20];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_NEGATIVE_NUMBER);
+    }
+
+    @Test
+    void 백원_미만의_상품가격_테스트() {
+        // given
+        String input = "[콜라,50,20];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_PRICE_MINIMUN_STANDARD);
+    }
+
+    @Test
+    void 십원으로_나뉘지_않는_상품가격_테스트() {
+        // given
+        String input = "[콜라,1053,20];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_DIVIDE_BY_TEN);
+    }
+
+    @Test
+    void 숫자가_아닌_상품수량_테스트() {
+        // given
+        String input = "[콜라,1500,상품수];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_NOT_INTEGER);
+    }
+
+    @Test
+    void 음수의_상품수량_테스트() {
+        // given
+        String input = "[콜라,1500,-20];[사이다,1000,10]";
+
+        // when
+        final RuntimeException exception = assertThrows(
+                RuntimeException.class, () -> productInputParser.parseProduct(input));
+
+        // then
+        System.out.println(exception.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ERROR_NEGATIVE_NUMBER);
+    }
 }
