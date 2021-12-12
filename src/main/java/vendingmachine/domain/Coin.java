@@ -24,7 +24,14 @@ public enum Coin {
                 .collect(Collectors.toList());
     }
 
-    public static List<Integer> getCoinValueList(int remainMoney) {
+    public static List<Integer> getCoinValueList() {
+        return Arrays.stream(Coin.values())
+                .map(Coin::getAmount)
+                .sequential()
+                .collect(Collectors.toList());
+    }
+
+    public static List<Integer> getAvailableCoinValueList(int remainMoney) {
         return Arrays.stream(Coin.values())
                 .filter(coin -> coin.getAmount() <= remainMoney)
                 .map(Coin::getAmount)

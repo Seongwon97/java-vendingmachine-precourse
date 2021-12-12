@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import vendingmachine.domain.ChangeDTO;
 import vendingmachine.domain.Product;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
@@ -8,6 +9,7 @@ import static vendingmachine.constant.Constant.*;
 import static vendingmachine.utils.ProductInputParser.parseProduct;
 import static vendingmachine.utils.Validator.*;
 import static vendingmachine.view.InputUtils.*;
+import static vendingmachine.view.OutputUtils.printFinalChange;
 import static vendingmachine.view.OutputUtils.printMachineInitCoin;
 
 public class VendingMachineController {
@@ -20,6 +22,8 @@ public class VendingMachineController {
             vendingMachine.sellProduct(getUserOrder());
         }
 
+        ChangeDTO finalChange = vendingMachine.getFinalChange();
+        printFinalChange(finalChange, vendingMachine.getChange());
     }
 
     private void init() {

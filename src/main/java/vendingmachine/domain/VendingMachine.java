@@ -55,7 +55,7 @@ public class VendingMachine {
     }
 
     private static int pickRandomCoin(int remainMoney) {
-        return pickNumberInList(getCoinValueList(remainMoney));
+        return pickNumberInList(getAvailableCoinValueList(remainMoney));
     }
 
     public void isValidOrderName(String order) {
@@ -80,6 +80,13 @@ public class VendingMachine {
             return false;
         }
         return true;
+    }
+
+    public ChangeDTO getFinalChange() {
+        ChangeDTO changeDTO = new ChangeDTO();
+        changeDTO.setFinalChange(change);
+
+        return changeDTO;
     }
 
 
