@@ -1,7 +1,6 @@
 package vendingmachine;
 
 import static vendingmachine.constant.Constant.*;
-import static vendingmachine.view.InputUtils.inputInitMachineMoney;
 
 public class Validator {
 
@@ -24,13 +23,19 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_INVALID_BRACKET);
         }
         if (productStr.charAt(productStr.length() - 1) != ']') {
-            throw new IllegalArgumentException(ERROR_INVALID_BRACKET)
+            throw new IllegalArgumentException(ERROR_INVALID_BRACKET);
         }
     }
 
     public static void checkProductNumOfInfo(String[] productInfo) {
         if (productInfo.length != 3) {
             throw new IllegalArgumentException(ERROR_INVALID_PRODUCT_INPUT);
+        }
+    }
+
+    public static void checkFrontBlank(String input) {
+        if (input.charAt(0) == ' ') {
+            throw new IllegalArgumentException(ERROR_PRODUCT_NAME_BLANK);
         }
     }
 

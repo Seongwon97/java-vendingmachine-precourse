@@ -6,14 +6,14 @@ import vendingmachine.domain.Products;
 import static vendingmachine.Validator.*;
 
 public class ProductInputParser {
-    public Products parseProduct(String input) {
+    public void parseProduct(String input) {
         checkEmptyInput(input);
         String[] productList = input.split(";");
         for (String productStr : productList) {
             mappingProduct(productStr);
         }
 
-        return new Products();
+//        return new Products();
     }
 
     private Product mappingProduct(String productStr) {
@@ -28,6 +28,7 @@ public class ProductInputParser {
     }
 
     private String checkName(String name) {
+        checkFrontBlank(name);
         return name;
     }
 
