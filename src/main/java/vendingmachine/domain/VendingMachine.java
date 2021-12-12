@@ -27,7 +27,7 @@ public class VendingMachine {
     }
 
     private void initRemainCoin(int initMoney) {
-        for (Coin c: getCoinList()) {
+        for (Coin c : getCoinList()) {
             remainCoin.put(c, 0);
         }
         setRemainCoin(initMoney);
@@ -36,22 +36,14 @@ public class VendingMachine {
     private void setRemainCoin(int initMoney) {
         int remainMoney = initMoney;
         while (remainMoney > 0) {
-            int pickedCoin = pickRandomCoin();
-            if (checkAddCoinAvailable(remainMoney, pickedCoin)) {
-                remainMoney -= pickedCoin;
-                remainCoin.put(getEnumCoin(pickedCoin), remainCoin.get(getEnumCoin(pickedCoin))+1);
-            }
+            int pickedCoin = pickRandomCoin(remainMoney);
+            remainMoney -= pickedCoin;
+            remainCoin.put(getEnumCoin(pickedCoin), remainCoin.get(getEnumCoin(pickedCoin)) + 1);
         }
     }
 
-    private static int pickRandomCoin() {
-        return pickNumberInList(getCoinValueList());
+    private static int pickRandomCoin(int remainMoney) {
+        return pickNumberInList(getCoinValueList(remainMoney));
     }
 
-    private static boolean checkAddCoinAvailable(int remainMoney, int coin) {
-        if (remainMoney < coin) {
-            return false;
-        }
-        return true;
-    }
 }

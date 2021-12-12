@@ -20,12 +20,14 @@ public enum Coin {
     // 추가 기능 구현
     public static List<Coin> getCoinList() {
         return Arrays.stream(Coin.values())
+
                 .sequential()
                 .collect(Collectors.toList());
     }
 
-    public static List<Integer> getCoinValueList() {
+    public static List<Integer> getCoinValueList(int remainMoney) {
         return Arrays.stream(Coin.values())
+                .filter(coin -> coin.getAmount() <= remainMoney)
                 .map(Coin::getAmount)
                 .sequential()
                 .collect(Collectors.toList());
