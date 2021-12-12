@@ -14,14 +14,21 @@ public class Products {
             return;
         }
         Product product = productList.get(name);
-        product.setQuantity(product.getQuantity() - 1);
+        product.consumeProduct();
     }
 
-    private boolean isExist(String name) {
+    public boolean isExist(String name) {
         if (!productList.containsKey(name)) {
             return false;
         }
         if (productList.get(name).getQuantity() <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isValidConsume(String name, int change) {
+        if (change < productList.get(name).getPrice()) {
             return false;
         }
         return true;

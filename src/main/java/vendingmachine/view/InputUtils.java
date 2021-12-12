@@ -21,4 +21,10 @@ public class InputUtils {
         return Console.readLine();
     }
 
+    public static String inputOrderMessage(int change) {
+        System.out.println("\n투입 금액: " + change);
+        System.out.println("구매할 상품명을 입력해 주세요.");
+        return Console.readLine();
+    }
+
 }

@@ -21,8 +21,16 @@ public class VendingMachine {
         return remainCoin;
     }
 
+    public Products getProducts() {
+        return products;
+    }
+
     public void setProducts(Products products) {
         this.products = products;
+    }
+
+    public int getChange() {
+        return change;
     }
 
     public void setChange(int change) {

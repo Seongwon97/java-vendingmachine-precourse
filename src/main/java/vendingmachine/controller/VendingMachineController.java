@@ -3,6 +3,7 @@ package vendingmachine.controller;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
 
+import static vendingmachine.constant.Constant.*;
 import static vendingmachine.utils.ProductInputParser.parseProduct;
 import static vendingmachine.utils.Validator.*;
 import static vendingmachine.view.InputUtils.*;
@@ -14,6 +15,7 @@ public class VendingMachineController {
 
     public void turnOn() {
         init();
+        getUserOrder();
     }
 
     private void init() {
@@ -25,7 +27,6 @@ public class VendingMachineController {
 
         vendingMachine.setProducts(getProductList());
         vendingMachine.setChange(getUserInputMoney());
-
     }
 
     private int getInitMachineMoney() {
@@ -63,6 +64,27 @@ public class VendingMachineController {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private String getUserOrder() {
+        while (true) {
+            try {
+                String order = inputOrderMessage(vendingMachine.getChange());
+                isValidOrderName(order);
+                return order;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void isValidOrderName(String order) {
+        if (!vendingMachine.getProducts().isExist(order)) {
+            throw new IllegalArgumentException(ERROR_NOT_INVALID_ORDER_NAME);
+        }
+        if (!vendingMachine.getProducts().isValidConsume(order, vendingMachine.getChange())) {
+            throw new IllegalArgumentException(ERROR_LESS_CHANGE);
         }
     }
 
