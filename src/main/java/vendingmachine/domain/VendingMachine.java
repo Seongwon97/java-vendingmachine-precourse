@@ -10,15 +10,11 @@ public class VendingMachine {
 
     private static Map<Coin, Integer> remainCoin = new TreeMap<>();
     public Products products;
-    private int initMoney;
 
-    public VendingMachine(int initMoney) {
-        this.initMoney = initMoney;
-        initRemainCoin(initMoney);
-    }
+    private int change;
 
-    public int getInitMoney() {
-        return initMoney;
+    public VendingMachine() {
+
     }
 
     public Map<Coin, Integer> getRemainCoin() {
@@ -29,7 +25,11 @@ public class VendingMachine {
         this.products = products;
     }
 
-    private void initRemainCoin(int initMoney) {
+    public void setChange(int change) {
+        this.change = change;
+    }
+
+    public void initRemainCoin(int initMoney) {
         for (Coin c : getCoinList()) {
             remainCoin.put(c, 0);
         }

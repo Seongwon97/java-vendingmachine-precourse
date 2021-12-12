@@ -6,8 +6,7 @@ import vendingmachine.domain.VendingMachine;
 import static vendingmachine.utils.ProductInputParser.parseProduct;
 import static vendingmachine.utils.Validator.checkNotString;
 import static vendingmachine.utils.Validator.checkPositiveNumber;
-import static vendingmachine.view.InputUtils.inputInitMachineMoney;
-import static vendingmachine.view.InputUtils.inputProductList;
+import static vendingmachine.view.InputUtils.*;
 import static vendingmachine.view.OutputUtils.printMachineInitCoin;
 
 public class VendingMachineController {
@@ -19,10 +18,15 @@ public class VendingMachineController {
     }
 
     private void init() {
+        vendingMachine = new VendingMachine();
+
         int inputMoney = getInitMachineMoney();
-        vendingMachine = new VendingMachine(inputMoney);
+        vendingMachine.initRemainCoin(inputMoney);
         printMachineInitCoin(vendingMachine.getRemainCoin());
+
         vendingMachine.setProducts(getProductList());
+        vendingMachine.setChange(getUserInputMoney());
+
     }
 
     private int getInitMachineMoney() {
@@ -43,6 +47,19 @@ public class VendingMachineController {
             String input = inputProductList();
             try {
                 return parseProduct(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private int getUserInputMoney() {
+        while (true) {
+            String input = inputUserMoney();
+            try {
+                int inputMoney = checkNotString(input);
+                checkPositiveNumber(inputMoney);
+                return inputMoney;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
