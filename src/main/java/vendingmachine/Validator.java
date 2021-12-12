@@ -1,7 +1,6 @@
 package vendingmachine;
 
-import static vendingmachine.constant.Constant.ERROR_NEGATIVE_NUMBER;
-import static vendingmachine.constant.Constant.ERROR_NOT_INTEGER;
+import static vendingmachine.constant.Constant.*;
 import static vendingmachine.view.InputUtils.inputInitMachineMoney;
 
 public class Validator {
@@ -17,6 +16,27 @@ public class Validator {
     public static void checkPositiveNumber(int input) {
         if (input < 0) {
             throw new IllegalArgumentException(ERROR_NEGATIVE_NUMBER);
+        }
+    }
+
+    public static void checkProductStrBracket(String productStr) {
+        if (productStr.charAt(0) != '[') {
+            throw new IllegalArgumentException(ERROR_INVALID_BRACKET);
+        }
+        if (productStr.charAt(productStr.length() - 1) != ']') {
+            throw new IllegalArgumentException(ERROR_INVALID_BRACKET)
+        }
+    }
+
+    public static void checkProductNumOfInfo(String[] productInfo) {
+        if (productInfo.length != 3) {
+            throw new IllegalArgumentException(ERROR_INVALID_PRODUCT_INPUT);
+        }
+    }
+
+    public static void checkEmptyInput(String input) {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
         }
     }
 }
