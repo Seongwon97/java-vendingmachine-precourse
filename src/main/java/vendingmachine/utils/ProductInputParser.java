@@ -53,6 +53,6 @@ public class ProductInputParser {
     private static int checkQuantity(String quantityStr) {
         int quantity = checkNotString(quantityStr);
         checkPositiveNumber(quantity);
-        return 1;
+        return quantity;
     }
 }

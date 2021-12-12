@@ -4,13 +4,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
-import static vendingmachine.constant.Constant.ERROR_LESS_CHANGE;
-import static vendingmachine.constant.Constant.ERROR_NOT_INVALID_ORDER_NAME;
+import static vendingmachine.constant.Constant.*;
 import static vendingmachine.domain.Coin.*;
 
 public class VendingMachine {
 
-    private static Map<Coin, Integer> remainCoin = new TreeMap<>();
+    private Map<Coin, Integer> remainCoin = new TreeMap<>();
     public Products products;
 
     private int change;
@@ -63,9 +62,18 @@ public class VendingMachine {
         if (!products.isExist(order)) {
             throw new IllegalArgumentException(ERROR_NOT_INVALID_ORDER_NAME);
         }
-        if (!products.isValidConsume(order, change)) {
+        if (!products.hasEnoughMoney(order, change)) {
             throw new IllegalArgumentException(ERROR_LESS_CHANGE);
         }
+        if (!products.hasEnoughQuantity(order)) {
+            throw new IllegalArgumentException(ERROR_LESS_QUANTITY);
+        }
     }
+
+    public void sellProduct(String name) {
+        products.consume(name);
+//        change -= products.getProductPrice(name);
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import vendingmachine.domain.Product;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
 
@@ -15,7 +16,10 @@ public class VendingMachineController {
 
     public void turnOn() {
         init();
-        getUserOrder();
+        while (true) {
+            vendingMachine.sellProduct(getUserOrder());
+        }
+
     }
 
     private void init() {
