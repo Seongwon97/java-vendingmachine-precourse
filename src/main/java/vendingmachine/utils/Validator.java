@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.utils;
 
 import static vendingmachine.constant.Constant.*;
 

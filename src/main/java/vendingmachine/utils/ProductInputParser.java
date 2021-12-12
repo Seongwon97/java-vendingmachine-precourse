@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.utils;
 
 import vendingmachine.domain.Product;
 import vendingmachine.domain.Products;
@@ -6,11 +6,11 @@ import vendingmachine.domain.Products;
 import java.util.HashMap;
 import java.util.Map;
 
-import static vendingmachine.Validator.*;
+import static vendingmachine.utils.Validator.*;
 
 public class ProductInputParser {
 
-    public Products parseProduct(String input) {
+    public static Products parseProduct(String input) {
         Map<String, Product> productMap = new HashMap<>();
         checkEmptyInput(input);
         String[] productList = input.split(";");
@@ -22,7 +22,7 @@ public class ProductInputParser {
         return new Products(productMap);
     }
 
-    private Product mappingProduct(String productStr) {
+    private static Product mappingProduct(String productStr) {
         checkProductStrBracket(productStr);
 
         String[] productInfo = removeBracket(productStr).split(",");
@@ -33,16 +33,16 @@ public class ProductInputParser {
                 , checkQuantity(productInfo[2]));
     }
 
-    private String removeBracket(String productStr) {
+    private static String removeBracket(String productStr) {
         return productStr.substring(1, productStr.length() - 1);
     }
 
-    private String checkName(String name) {
+    private static String checkName(String name) {
         checkFrontBlank(name);
         return name;
     }
 
-    private int checkPrice(String priceStr) {
+    private static int checkPrice(String priceStr) {
         int price = checkNotString(priceStr);
         checkPositiveNumber(price);
         checkPriceMinimumStandard(price);
@@ -50,7 +50,7 @@ public class ProductInputParser {
         return price;
     }
 
-    private int checkQuantity(String quantityStr) {
+    private static int checkQuantity(String quantityStr) {
         int quantity = checkNotString(quantityStr);
         checkPositiveNumber(quantity);
         return 1;

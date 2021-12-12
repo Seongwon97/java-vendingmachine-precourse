@@ -2,12 +2,12 @@ package vendingmachine;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import vendingmachine.utils.Validator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static vendingmachine.constant.Constant.ERROR_NEGATIVE_NUMBER;
 import static vendingmachine.constant.Constant.ERROR_NOT_INTEGER;
 

@@ -9,7 +9,8 @@ public class VendingMachine {
     Products products;
     int change;
 
-    public VendingMachine(int change) {
+    public VendingMachine(int change, Products products) {
+        this.products = products;
         this.change = change;
     }
 

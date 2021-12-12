@@ -1,12 +1,13 @@
 package vendingmachine.controller;
 
-import camp.nextstep.edu.missionutils.Console;
+import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
 
-import static vendingmachine.Validator.checkNotString;
-import static vendingmachine.Validator.checkPositiveNumber;
-import static vendingmachine.constant.Constant.ERROR_NOT_INTEGER;
+import static vendingmachine.utils.ProductInputParser.parseProduct;
+import static vendingmachine.utils.Validator.checkNotString;
+import static vendingmachine.utils.Validator.checkPositiveNumber;
 import static vendingmachine.view.InputUtils.inputInitMachineMoney;
+import static vendingmachine.view.InputUtils.inputProductList;
 
 public class VendingMachineController {
 
@@ -18,22 +19,30 @@ public class VendingMachineController {
 
     private void init() {
         int inputMoney = getInitMachineMoney();
-        vendingMachine = new VendingMachine(inputMoney);
+        vendingMachine = new VendingMachine(inputMoney, getProductList());
     }
 
     private int getInitMachineMoney() {
-        int inputMoney = 0;
-        boolean flag = false;
-        while (!flag) {
+        while (true) {
             String input = inputInitMachineMoney();
             try {
-                inputMoney = checkNotString(input);
+                int inputMoney = checkNotString(input);
                 checkPositiveNumber(inputMoney);
-                flag = true;
+                return inputMoney;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-        return inputMoney;
+    }
+
+    private Products getProductList() {
+        while (true) {
+            String input = inputProductList();
+            try {
+                return parseProduct(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
