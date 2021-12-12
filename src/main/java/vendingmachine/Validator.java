@@ -44,4 +44,16 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
         }
     }
+
+    public static void checkPriceMinimumStandard(int price) {
+        if (price < 100) {
+            throw new IllegalArgumentException(ERROR_PRICE_MINIMUN_STANDARD);
+        }
+    }
+
+    public static void checkDivideByTen(int price) {
+        if (price % 10 != 0) {
+            throw new IllegalArgumentException(ERROR_DIVIDE_BY_TEN);
+        }
+    }
 }

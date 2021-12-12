@@ -33,7 +33,11 @@ public class ProductInputParser {
     }
 
     private int checkPrice(String priceStr) {
-        return 1;
+        int price = checkNotString(priceStr);
+        checkPositiveNumber(price);
+        checkPriceMinimumStandard(price);
+        checkDivideByTen(price);
+        return price;
     }
 
     private int checkQuantity(String quantity) {
