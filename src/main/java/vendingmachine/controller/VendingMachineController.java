@@ -4,8 +4,7 @@ import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
 
 import static vendingmachine.utils.ProductInputParser.parseProduct;
-import static vendingmachine.utils.Validator.checkNotString;
-import static vendingmachine.utils.Validator.checkPositiveNumber;
+import static vendingmachine.utils.Validator.*;
 import static vendingmachine.view.InputUtils.*;
 import static vendingmachine.view.OutputUtils.printMachineInitCoin;
 
@@ -35,6 +34,7 @@ public class VendingMachineController {
             try {
                 int inputMoney = checkNotString(input);
                 checkPositiveNumber(inputMoney);
+                checkDivideByTen(inputMoney);
                 return inputMoney;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

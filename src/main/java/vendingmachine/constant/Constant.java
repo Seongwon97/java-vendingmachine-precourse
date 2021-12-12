@@ -12,6 +12,6 @@ public class Constant {
     public static final String ERROR_PRODUCT_NAME_BLANK = "[ERROR] 상품명의 시작 부분에 공백이 있습니다.";
     public static final String ERROR_EMPTY_INPUT = "[ERROR] 입력에 빈 값이 존재합니다.";
     public static final String ERROR_PRICE_MINIMUN_STANDARD = "[ERROR] 상품의 가격은 100원 이상이어야 합니다.";
-    public static final String ERROR_DIVIDE_BY_TEN = "[ERROR] 상품의 가격은 10으로 나누어 떨어져야 합니다.";
+    public static final String ERROR_DIVIDE_BY_TEN = "[ERROR] 가격은 10으로 나누어 떨어져야 합니다.";
 
 }
