@@ -75,5 +75,13 @@ public class VendingMachine {
         change -= products.getProductPrice(name);
     }
 
+    public boolean isAvailableKeepSell() {
+        if (!products.availableToBuy(change)) {
+            return false;
+        }
+        return true;
+    }
+
+
 
 }

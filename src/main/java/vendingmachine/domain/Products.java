@@ -39,4 +39,18 @@ public class Products {
         return productList.get(name).getPrice();
     }
 
+
+    public boolean availableToBuy(int change) {
+        boolean canBuy = false;
+        for (String name : productList.keySet()) {
+            if (productList.get(name).getPrice() < change
+                    && productList.get(name).getQuantity() > 0) {
+                canBuy = true;
+                return canBuy;
+            }
+        }
+        return canBuy;
+    }
+
+
 }

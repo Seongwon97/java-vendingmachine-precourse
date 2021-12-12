@@ -16,7 +16,7 @@ public class VendingMachineController {
 
     public void turnOn() {
         init();
-        while (true) {
+        while (vendingMachine.isAvailableKeepSell()) {
             vendingMachine.sellProduct(getUserOrder());
         }
 
