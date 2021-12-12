@@ -25,12 +25,16 @@ public class ProductInputParser {
     private Product mappingProduct(String productStr) {
         checkProductStrBracket(productStr);
 
-        String[] productInfo = productStr.split(",");
+        String[] productInfo = removeBracket(productStr).split(",");
         checkProductNumOfInfo(productInfo);
 
         return new Product(checkName(productInfo[0])
                 , checkPrice(productInfo[1])
                 , checkQuantity(productInfo[2]));
+    }
+
+    private String removeBracket(String productStr) {
+        return productStr.substring(1, productStr.length() - 1);
     }
 
     private String checkName(String name) {
