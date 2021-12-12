@@ -8,6 +8,7 @@ import static vendingmachine.utils.Validator.checkNotString;
 import static vendingmachine.utils.Validator.checkPositiveNumber;
 import static vendingmachine.view.InputUtils.inputInitMachineMoney;
 import static vendingmachine.view.InputUtils.inputProductList;
+import static vendingmachine.view.OutputUtils.printMachineInitCoin;
 
 public class VendingMachineController {
 
@@ -19,7 +20,9 @@ public class VendingMachineController {
 
     private void init() {
         int inputMoney = getInitMachineMoney();
-        vendingMachine = new VendingMachine(inputMoney, getProductList());
+        vendingMachine = new VendingMachine(inputMoney);
+        printMachineInitCoin(vendingMachine.getRemainCoin());
+        vendingMachine.setProducts(getProductList());
     }
 
     private int getInitMachineMoney() {
@@ -45,4 +48,5 @@ public class VendingMachineController {
             }
         }
     }
+
 }

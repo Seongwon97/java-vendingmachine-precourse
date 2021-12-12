@@ -183,8 +183,8 @@ public enum Coin {
     * [ ] [투입금액] 투입 금액이 숫자가 아닌 경우
     * [ ] [투입금액] 투입 금액이 음수인 경우
     * [ ] [구매할 상품] 구매할 상품이 없는 상품인 경우
-* [ ] 초기 자판기의 보유한 동전 세팅하는 메서드 구현
-  * [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInList()`를 활용하였는가?
+* [X] 초기 자판기의 보유한 동전 세팅하는 메서드 구현
+  * [X] `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInList()`를 활용하였는가?
 * [ ] 음료를 구매하는 메서드 구현
   * [ ] 음료의 수량 감소
   * [ ] 투입 금액의 감소

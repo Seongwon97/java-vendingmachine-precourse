@@ -8,14 +8,13 @@ import static vendingmachine.domain.Coin.*;
 
 public class VendingMachine {
 
-    private Map<Coin, Integer> remainCoin = new TreeMap<>();
+    private static Map<Coin, Integer> remainCoin = new TreeMap<>();
     public Products products;
     private int initMoney;
 
-    public VendingMachine(int initMoney, Products products) {
-        initRemainCoin(initMoney);
-        this.products = products;
+    public VendingMachine(int initMoney) {
         this.initMoney = initMoney;
+        initRemainCoin(initMoney);
     }
 
     public int getInitMoney() {
@@ -24,6 +23,10 @@ public class VendingMachine {
 
     public Map<Coin, Integer> getRemainCoin() {
         return remainCoin;
+    }
+
+    public void setProducts(Products products) {
+        this.products = products;
     }
 
     private void initRemainCoin(int initMoney) {
