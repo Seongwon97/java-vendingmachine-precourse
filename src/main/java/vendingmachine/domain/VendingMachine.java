@@ -72,7 +72,7 @@ public class VendingMachine {
 
     public void sellProduct(String name) {
         products.consume(name);
-//        change -= products.getProductPrice(name);
+        change -= products.getProductPrice(name);
     }
 
 
