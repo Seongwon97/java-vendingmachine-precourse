@@ -71,7 +71,7 @@ public class VendingMachineController {
         while (true) {
             try {
                 String order = inputOrderMessage(vendingMachine.getChange());
-                isValidOrderName(order);
+                vendingMachine.isValidOrderName(order);
                 return order;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -79,13 +79,6 @@ public class VendingMachineController {
         }
     }
 
-    private void isValidOrderName(String order) {
-        if (!vendingMachine.getProducts().isExist(order)) {
-            throw new IllegalArgumentException(ERROR_NOT_INVALID_ORDER_NAME);
-        }
-        if (!vendingMachine.getProducts().isValidConsume(order, vendingMachine.getChange())) {
-            throw new IllegalArgumentException(ERROR_LESS_CHANGE);
-        }
-    }
+
 
 }

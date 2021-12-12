@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
+import static vendingmachine.constant.Constant.ERROR_LESS_CHANGE;
+import static vendingmachine.constant.Constant.ERROR_NOT_INVALID_ORDER_NAME;
 import static vendingmachine.domain.Coin.*;
 
 public class VendingMachine {
@@ -55,6 +57,15 @@ public class VendingMachine {
 
     private static int pickRandomCoin(int remainMoney) {
         return pickNumberInList(getCoinValueList(remainMoney));
+    }
+
+    public void isValidOrderName(String order) {
+        if (!products.isExist(order)) {
+            throw new IllegalArgumentException(ERROR_NOT_INVALID_ORDER_NAME);
+        }
+        if (!products.isValidConsume(order, change)) {
+            throw new IllegalArgumentException(ERROR_LESS_CHANGE);
+        }
     }
 
 }
