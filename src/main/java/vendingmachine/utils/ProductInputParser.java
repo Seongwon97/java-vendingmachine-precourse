@@ -9,10 +9,16 @@ import java.util.Map;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductInputParser {
+    public static final String PRODUCT_OUTER_SEPORATOR = ";";
+    public static final String PRODUCT_INNER_SEPERATOR = ",";
+    public static final int PRODUCT_NAME_POSITION = 0;
+    public static final int PRODUCT_PRICE_POSITION = 1;
+    public static final int PRODUCT_QUANTITY_POSITION = 2;
+
     public static Products parseProduct(String input) {
         Map<String, Product> productMap = new HashMap<>();
         checkEmptyInput(input);
-        String[] productList = input.split(";");
+        String[] productList = input.split(PRODUCT_OUTER_SEPORATOR);
         for (String productStr : productList) {
             Product temp = mappingProduct(productStr);
             productMap.put(temp.getName(), temp);
@@ -24,12 +30,12 @@ public class ProductInputParser {
     private static Product mappingProduct(String productStr) {
         checkProductStrBracket(productStr);
 
-        String[] productInfo = removeBracket(productStr).split(",");
+        String[] productInfo = removeBracket(productStr).split(PRODUCT_INNER_SEPERATOR);
         checkProductNumOfInfo(productInfo);
 
-        return new Product(checkName(productInfo[0])
-                , checkPrice(productInfo[1])
-                , checkQuantity(productInfo[2]));
+        return new Product(checkName(productInfo[PRODUCT_NAME_POSITION])
+                , checkPrice(productInfo[PRODUCT_PRICE_POSITION])
+                , checkQuantity(productInfo[PRODUCT_QUANTITY_POSITION]));
     }
 
     private static String removeBracket(String productStr) {

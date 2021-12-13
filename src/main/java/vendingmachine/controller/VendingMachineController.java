@@ -1,11 +1,9 @@
 package vendingmachine.controller;
 
 import vendingmachine.domain.ChangeDTO;
-import vendingmachine.domain.Product;
 import vendingmachine.domain.Products;
 import vendingmachine.domain.VendingMachine;
 
-import static vendingmachine.constant.Constant.*;
 import static vendingmachine.utils.ProductInputParser.parseProduct;
 import static vendingmachine.utils.Validator.*;
 import static vendingmachine.view.InputUtils.*;

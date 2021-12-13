@@ -2,7 +2,7 @@ package vendingmachine.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static vendingmachine.constant.Constant.*;
+import static vendingmachine.view.Messages.*;
 import static vendingmachine.view.OutputUtils.printChangeMessage;
 
 public class InputUtils {
@@ -24,7 +24,7 @@ public class InputUtils {
 
     public static String inputOrderMessage(int change) {
         printChangeMessage(change);
-        System.out.println("구매할 상품명을 입력해 주세요.");
+        System.out.println(INPUT_PRODUCT_NAME);
         return Console.readLine();
     }
 

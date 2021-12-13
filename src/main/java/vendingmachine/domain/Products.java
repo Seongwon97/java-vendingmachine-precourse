@@ -3,6 +3,8 @@ package vendingmachine.domain;
 import java.util.Map;
 
 public class Products {
+    public static final int PRODUCT_SOLD_OUT = 0;
+
     private final Map<String, Product> productList;
 
     public Products(Map<String, Product> productList) {
@@ -29,7 +31,7 @@ public class Products {
     }
 
     public boolean hasEnoughQuantity(String name) {
-        if (productList.get(name).getQuantity() > 0) {
+        if (productList.get(name).getQuantity() > PRODUCT_SOLD_OUT) {
             return true;
         }
         return false;
@@ -43,7 +45,7 @@ public class Products {
         boolean canBuy = false;
         for (String name : productList.keySet()) {
             if (productList.get(name).getPrice() < change
-                    && productList.get(name).getQuantity() > 0) {
+                    && productList.get(name).getQuantity() > PRODUCT_SOLD_OUT) {
                 canBuy = true;
                 return canBuy;
             }

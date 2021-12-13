@@ -4,10 +4,13 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInList;
-import static vendingmachine.constant.Constant.*;
+import static vendingmachine.view.Messages.*;
 import static vendingmachine.domain.Coin.*;
 
 public class VendingMachine {
+    public static final int INITIAL_COIN_NUM = 0;
+    public static final int ADD_COIN = 1;
+    public static final int REMAIN_NO_MONEY = 0;
 
     private Map<Coin, Integer> remainCoin = new TreeMap<>();
     public Products products;
@@ -35,17 +38,17 @@ public class VendingMachine {
 
     public void initRemainCoin(int initMoney) {
         for (Coin c : getCoinList()) {
-            remainCoin.put(c, 0);
+            remainCoin.put(c, INITIAL_COIN_NUM);
         }
         setRemainCoin(initMoney);
     }
 
     private void setRemainCoin(int initMoney) {
         int remainMoney = initMoney;
-        while (remainMoney > 0) {
+        while (remainMoney > REMAIN_NO_MONEY) {
             int pickedCoin = pickRandomCoin(remainMoney);
             remainMoney -= pickedCoin;
-            remainCoin.put(getEnumCoin(pickedCoin), remainCoin.get(getEnumCoin(pickedCoin)) + 1);
+            remainCoin.put(getEnumCoin(pickedCoin), remainCoin.get(getEnumCoin(pickedCoin)) + ADD_COIN);
         }
     }
 

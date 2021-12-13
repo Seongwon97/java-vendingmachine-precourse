@@ -5,7 +5,7 @@ import vendingmachine.utils.ProductInputParser;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static vendingmachine.constant.Constant.*;
+import static vendingmachine.view.Messages.*;
 
 class ProductInputParserTest {
 

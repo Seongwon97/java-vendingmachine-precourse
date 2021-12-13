@@ -8,8 +8,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static vendingmachine.constant.Constant.ERROR_NEGATIVE_NUMBER;
-import static vendingmachine.constant.Constant.ERROR_NOT_INTEGER;
+import static vendingmachine.view.Messages.ERROR_NEGATIVE_NUMBER;
+import static vendingmachine.view.Messages.ERROR_NOT_INTEGER;
 
 class ValidatorTest {
     Validator validator = new Validator();
