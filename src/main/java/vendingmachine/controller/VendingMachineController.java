@@ -9,8 +9,7 @@ import static vendingmachine.constant.Constant.*;
 import static vendingmachine.utils.ProductInputParser.parseProduct;
 import static vendingmachine.utils.Validator.*;
 import static vendingmachine.view.InputUtils.*;
-import static vendingmachine.view.OutputUtils.printFinalChange;
-import static vendingmachine.view.OutputUtils.printMachineInitCoin;
+import static vendingmachine.view.OutputUtils.*;
 
 public class VendingMachineController {
     VendingMachine vendingMachine;
@@ -27,9 +26,7 @@ public class VendingMachineController {
 
     private void init() {
         vendingMachine = new VendingMachine();
-
-        int inputMoney = getInitMachineMoney();
-        vendingMachine.initRemainCoin(inputMoney);
+        vendingMachine.initRemainCoin(getInitMachineMoney());
         printMachineInitCoin(vendingMachine.getRemainCoin());
 
         vendingMachine.setProducts(getProductList());
@@ -45,7 +42,7 @@ public class VendingMachineController {
                 checkDivideByTen(inputMoney);
                 return inputMoney;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                printErrorMessage(e);
             }
         }
     }
@@ -56,7 +53,7 @@ public class VendingMachineController {
             try {
                 return parseProduct(input);
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                printErrorMessage(e);
             }
         }
     }
@@ -69,7 +66,7 @@ public class VendingMachineController {
                 checkPositiveNumber(inputMoney);
                 return inputMoney;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                printErrorMessage(e);
             }
         }
     }
@@ -81,7 +78,7 @@ public class VendingMachineController {
                 vendingMachine.isValidOrderName(order);
                 return order;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                printErrorMessage(e);
             }
         }
     }

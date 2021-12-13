@@ -16,10 +16,18 @@ public class OutputUtils {
     }
 
     public static void printFinalChange(ChangeDTO changeDTO, int change) {
-        System.out.println("\n투입 금액: " + change);
+        printChangeMessage(change);
         System.out.println("잔돈");
         for (Coin coin : changeDTO.changeMap.keySet()) {
             System.out.println(coin.getAmount() + " - " + changeDTO.changeMap.get(coin) + "개");
         }
+    }
+
+    public static void printErrorMessage(IllegalArgumentException e)  {
+        System.out.println(e.getMessage());
+    }
+
+    public static void printChangeMessage(int change) {
+        System.out.println("\n투입 금액: " + change + "원");
     }
 }
