@@ -13,7 +13,6 @@ import static vendingmachine.view.OutputUtils.printFinalChange;
 import static vendingmachine.view.OutputUtils.printMachineInitCoin;
 
 public class VendingMachineController {
-
     VendingMachine vendingMachine;
 
     public void turnOn() {
@@ -86,7 +85,4 @@ public class VendingMachineController {
             }
         }
     }
-
-
-
 }

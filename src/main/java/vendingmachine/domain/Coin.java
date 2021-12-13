@@ -16,10 +16,8 @@ public enum Coin {
         this.amount = amount;
     }
 
-    // 추가 기능 구현
     public static List<Coin> getCoinList() {
         return Arrays.stream(Coin.values())
-
                 .sequential()
                 .collect(Collectors.toList());
     }
@@ -48,5 +46,4 @@ public enum Coin {
                 .filter(coin -> coin.getAmount() == amount)
                 .sequential().collect(Collectors.toList()).get(0);
     }
-
 }

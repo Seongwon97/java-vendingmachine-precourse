@@ -3,7 +3,6 @@ package vendingmachine.utils;
 import static vendingmachine.constant.Constant.*;
 
 public class Validator {
-
     public static int checkNotString(String input) {
         try {
             return Integer.parseInt(input);

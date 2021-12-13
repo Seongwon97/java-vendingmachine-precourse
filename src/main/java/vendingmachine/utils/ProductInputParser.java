@@ -9,7 +9,6 @@ import java.util.Map;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductInputParser {
-
     public static Products parseProduct(String input) {
         Map<String, Product> productMap = new HashMap<>();
         checkEmptyInput(input);

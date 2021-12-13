@@ -39,7 +39,6 @@ public class Products {
         return productList.get(name).getPrice();
     }
 
-
     public boolean availableToBuy(int change) {
         boolean canBuy = false;
         for (String name : productList.keySet()) {
@@ -51,6 +50,4 @@ public class Products {
         }
         return canBuy;
     }
-
-
 }

@@ -11,7 +11,6 @@ public class VendingMachine {
 
     private Map<Coin, Integer> remainCoin = new TreeMap<>();
     public Products products;
-
     private int change;
 
     public VendingMachine() {
@@ -20,10 +19,6 @@ public class VendingMachine {
 
     public Map<Coin, Integer> getRemainCoin() {
         return remainCoin;
-    }
-
-    public Products getProducts() {
-        return products;
     }
 
     public void setProducts(Products products) {
@@ -88,7 +83,4 @@ public class VendingMachine {
 
         return changeDTO;
     }
-
-
-
 }
