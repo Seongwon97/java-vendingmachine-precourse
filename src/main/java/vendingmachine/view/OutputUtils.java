@@ -17,7 +17,7 @@ public class OutputUtils {
     public static void printMachineInitCoin(Map<Coin, Integer> remainCoin) {
         System.out.println(PRINT_MACHINE_COIN_MESSAGE);
         for (Coin c : remainCoin.keySet()) {
-            System.out.println(c.getAmount() + COIN_PRINT_SEPORATOR + remainCoin.get(c) + COIN_PRINT_UNIT);
+            System.out.println(c.getAmount() + WON + COIN_PRINT_SEPORATOR + remainCoin.get(c) + COIN_PRINT_UNIT);
         }
     }
 
@@ -25,7 +25,7 @@ public class OutputUtils {
         printChangeMessage(change);
         System.out.println(REMAIN_MONEY);
         for (Coin coin : changeDTO.changeMap.keySet()) {
-            System.out.println(coin.getAmount() + COIN_PRINT_SEPORATOR + changeDTO.changeMap.get(coin) + COIN_PRINT_UNIT);
+            System.out.println(coin.getAmount() + WON + COIN_PRINT_SEPORATOR + changeDTO.changeMap.get(coin) + COIN_PRINT_UNIT);
         }
     }
 
