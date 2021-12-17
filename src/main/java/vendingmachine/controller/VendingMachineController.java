@@ -59,6 +59,7 @@ public class VendingMachineController {
             try {
                 String order = scanPurchase();
                 productService.validPurchaseProduct(order, userChangeService.getUserChange());
+                purchase(order);
                 flag = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -66,7 +67,9 @@ public class VendingMachineController {
         }
     }
 
-    public void purchase() {
+    public void purchase(String order) {
+        int productPrice = productService.sell(order);
+        userChangeService.purchase(productPrice);
     }
 
 }

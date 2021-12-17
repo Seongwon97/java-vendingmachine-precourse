@@ -6,6 +6,7 @@ import vendingmachine.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static vendingmachine.utils.ErrorMessage.*;
 import static vendingmachine.utils.Validator.*;
@@ -41,7 +42,7 @@ public class ProductService {
     }
 
     private void checkProductExist(List<Product> productList, String input, int change) {
-        for (Product product: productList) {
+        for (Product product : productList) {
             if (product.getName().equals(input)) {
                 checkProductSoldOut(product);
                 checkMoneyEnough(product, change);
@@ -63,6 +64,14 @@ public class ProductService {
         }
     }
 
+    public int sell(String productName) {
+        Product sellProduct = productRepository.getProductList().stream()
+                .filter(product -> product.getName().equals(productName))
+                .sequential()
+                .collect(Collectors.toList()).get(0);
+        productRepository.sellProduct(sellProduct);
+        return sellProduct.getPrice();
+    }
 
 
 }

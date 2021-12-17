@@ -14,4 +14,8 @@ public class UserChangeService {
     public int getUserChange() {
         return userChangeRepository.getChange();
     }
+
+    public void purchase(int productPrice) {
+        userChangeRepository.purchase(productPrice);
+    }
 }

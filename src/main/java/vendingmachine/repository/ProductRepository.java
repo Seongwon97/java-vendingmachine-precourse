@@ -26,4 +26,8 @@ public class ProductRepository {
     public List<Product> getProductList() {
         return Collections.unmodifiableList(productList);
     }
+
+    public void sellProduct(Product product) {
+        product.substractQuantity();
+    }
 }
