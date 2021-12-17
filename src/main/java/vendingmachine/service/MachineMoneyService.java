@@ -6,6 +6,7 @@ import vendingmachine.repository.MachineMoneyRepository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static vendingmachine.domain.Coin.getAvilableCoinList;
 import static vendingmachine.domain.Coin.getEnumCoin;
@@ -39,7 +40,7 @@ public class MachineMoneyService {
     }
 
     private Map<Coin, Integer> initCoinMap() {
-        Map<Coin, Integer> coinMap = new HashMap<>();
+        Map<Coin, Integer> coinMap = new TreeMap<>();
         Coin.getCoinList().stream()
                 .forEach(coin -> coinMap.put(coin, 0));
         return coinMap;
