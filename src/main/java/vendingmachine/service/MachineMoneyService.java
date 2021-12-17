@@ -12,28 +12,28 @@ import static vendingmachine.domain.Coin.getEnumCoin;
 import static vendingmachine.utils.Validator.*;
 
 public class MachineMoneyService {
-    private static MachineMoneyRepository machineMoneyRepository;
+    private static MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
 
     public void saveMoney(String input) {
         int money = checkValidInput(input);
-        // 돈을 repository에 저장하기
-        machineMoneyRepository = machineMoneyRepository.getInstance(saveCoinMap(money));
+        machineMoneyRepository.initMachieCoin(saveCoinMap(money));
     }
 
-    public int checkValidInput(String input) {
+    private int checkValidInput(String input) {
         int money = checkNotInteger(input);
         checkIsMinusInteger(money);
         checkDivideTen(money);
         return money;
     }
 
-    public Map<Coin, Integer> saveCoinMap(int money) {
+    private Map<Coin, Integer> saveCoinMap(int money) {
         Map<Coin, Integer> coinMap = initCoinMap();
         int currentMoney = money;
         while (currentMoney > 0) {
             int random = selectRandomCoin(currentMoney);
             int currentCoin = coinMap.get(getEnumCoin(random));
             coinMap.put(getEnumCoin(random), currentCoin + 1);
+            currentMoney -= random;
         }
         return coinMap;
     }
@@ -47,6 +47,10 @@ public class MachineMoneyService {
 
     private int selectRandomCoin(int currentMoney) {
         return Randoms.pickNumberInList(getAvilableCoinList(currentMoney));
+    }
+
+    public Map<Coin, Integer> getMachineCoinInfo() {
+        return machineMoneyRepository.getMachineCoin();
     }
 
 
