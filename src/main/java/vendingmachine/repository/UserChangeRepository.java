@@ -18,4 +18,8 @@ public class UserChangeRepository {
         }
     }
 
+    public int getChange() {
+        return change;
+    }
+
 }

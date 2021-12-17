@@ -10,4 +10,8 @@ public class UserChangeService {
     public void saveUserInput(String userInput) {
         userChangeRepository.initChange(checkValidPrice(userInput));
     }
+
+    public int getUserChange() {
+        return userChangeRepository.getChange();
+    }
 }

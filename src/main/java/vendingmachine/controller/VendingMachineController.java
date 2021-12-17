@@ -6,6 +6,7 @@ import vendingmachine.service.UserChangeService;
 
 import static vendingmachine.view.InputViews.*;
 import static vendingmachine.view.OutputViews.printMachineCoinInfo;
+import static vendingmachine.view.OutputViews.printUserChange;
 
 public class VendingMachineController {
     private static final MachineMoneyService machineMoneyService = new MachineMoneyService();
@@ -49,6 +50,7 @@ public class VendingMachineController {
                 System.out.println(e.getMessage());
             }
         }
+        printUserChange(userChangeService.getUserChange());
     }
 
 }
