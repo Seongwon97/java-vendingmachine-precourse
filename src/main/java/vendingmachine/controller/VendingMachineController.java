@@ -58,12 +58,15 @@ public class VendingMachineController {
         while(!flag) {
             try {
                 String order = scanPurchase();
-                productService.validPurchaseProduct(order);
+                productService.validPurchaseProduct(order, userChangeService.getUserChange());
                 flag = true;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void purchase() {
     }
 
 }

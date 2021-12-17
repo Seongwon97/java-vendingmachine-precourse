@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static vendingmachine.utils.ErrorMessage.ERROR_PRODUCT_NOT_EXIST;
-import static vendingmachine.utils.ErrorMessage.ERROR_PRODUCT_SOLD_OUT;
+import static vendingmachine.utils.ErrorMessage.*;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductService {
@@ -36,15 +35,16 @@ public class ProductService {
         return new Product(productInfo[0], price, quantity);
     }
 
-    public void validPurchaseProduct(String input) {
+    public void validPurchaseProduct(String input, int change) {
         checkProductName(input);
-        checkProductExist(productRepository.getProductList(), input);
+        checkProductExist(productRepository.getProductList(), input, change);
     }
 
-    private void checkProductExist(List<Product> productList, String input) {
+    private void checkProductExist(List<Product> productList, String input, int change) {
         for (Product product: productList) {
             if (product.getName().equals(input)) {
                 checkProductSoldOut(product);
+                checkMoneyEnough(product, change);
                 return;
             }
         }
@@ -54,6 +54,12 @@ public class ProductService {
     private void checkProductSoldOut(Product product) {
         if (product.getQuantity() == 0) {
             throw new IllegalArgumentException(ERROR_PRODUCT_SOLD_OUT);
+        }
+    }
+
+    private void checkMoneyEnough(Product product, int remainMoney) {
+        if (product.getPrice() > remainMoney) {
+            throw new IllegalArgumentException(ERROR_NOT_ENOUGH_MONEY);
         }
     }
 

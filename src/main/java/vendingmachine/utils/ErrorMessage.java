@@ -10,4 +10,5 @@ public class ErrorMessage {
     public static final String ERROR_PRODUCT_NAME_NONE = "[ERROR] 상품 이름이 입력되지 않았습니다.\n";
     public static final String ERROR_PRODUCT_NOT_EXIST = "[ERROR] 해당 상품은 존재하지 않습니다.\n";
     public static final String ERROR_PRODUCT_SOLD_OUT = "[ERROR] 해당 상품은 품절입니다.\n";
+    public static final String ERROR_NOT_ENOUGH_MONEY = "[ERROR] 돈이 부족합니다.\n";
 }
