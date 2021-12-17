@@ -36,42 +36,4 @@ public class ProductService {
         return new Product(productInfo[0], price, quantity);
     }
 
-    public void validPurchaseProduct(String input, int change) {
-        checkProductName(input);
-        checkProductExist(productRepository.getProductList(), input, change);
-    }
-
-    private void checkProductExist(List<Product> productList, String input, int change) {
-        for (Product product : productList) {
-            if (product.getName().equals(input)) {
-                checkProductSoldOut(product);
-                checkMoneyEnough(product, change);
-                return;
-            }
-        }
-        throw new IllegalArgumentException(ERROR_PRODUCT_NOT_EXIST);
-    }
-
-    private void checkProductSoldOut(Product product) {
-        if (product.getQuantity() == 0) {
-            throw new IllegalArgumentException(ERROR_PRODUCT_SOLD_OUT);
-        }
-    }
-
-    private void checkMoneyEnough(Product product, int remainMoney) {
-        if (product.getPrice() > remainMoney) {
-            throw new IllegalArgumentException(ERROR_NOT_ENOUGH_MONEY);
-        }
-    }
-
-    public int sell(String productName) {
-        Product sellProduct = productRepository.getProductList().stream()
-                .filter(product -> product.getName().equals(productName))
-                .sequential()
-                .collect(Collectors.toList()).get(0);
-        productRepository.sellProduct(sellProduct);
-        return sellProduct.getPrice();
-    }
-
-
 }
