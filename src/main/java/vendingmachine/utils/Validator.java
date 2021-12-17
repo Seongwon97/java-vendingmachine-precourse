@@ -4,23 +4,31 @@ import static vendingmachine.utils.ErrorMessage.*;
 
 public class Validator {
     public static int checkValidPrice(String input) {
-        int money = checkNotInteger(input);
+        int money = checkNotIntegerPrice(input);
         checkIsMinusInteger(money);
         checkDivideTen(money);
         return money;
     }
 
     public static int checkValidQuantity(String input) {
-        int quantity = checkNotInteger(input);
+        int quantity = checkNotIntegerQuantity(input);
         checkIsMinusInteger(quantity);
         return quantity;
     }
 
-    public static int checkNotInteger(String input) {
+    public static int checkNotIntegerPrice(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NOT_INTEGER_MONEY);
+        }
+    }
+
+    public static int checkNotIntegerQuantity(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_NOT_INTEGER_QUANTITY);
         }
     }
 
@@ -65,5 +73,10 @@ public class Validator {
         }
     }
 
+    public static void checkProcductMinimunPrice(int price) {
+        if (price < 100) {
+            throw new IllegalArgumentException(ERROR_PRODUCT_MINIMUN_PRICE);
+        }
+    }
 
 }

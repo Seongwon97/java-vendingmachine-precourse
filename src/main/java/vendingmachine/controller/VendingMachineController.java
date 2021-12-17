@@ -16,7 +16,7 @@ public class VendingMachineController {
         initMachineMoney();
         initProductInfo();
         initUserChange();
-        while (purchaseService.checkContinueToSell()) { // 멈추는 조건 추가
+        while (purchaseService.checkContinueToSell()) {
             getPurchase();
         }
         printChange();

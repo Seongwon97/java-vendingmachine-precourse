@@ -32,6 +32,7 @@ public class ProductService {
         checkProductInfoSize(productInfo);
         checkProductName(productInfo[0]);
         int price = checkValidPrice(productInfo[1]);
+        checkProcductMinimunPrice(price);
         int quantity = checkValidQuantity(productInfo[2]);
         return new Product(productInfo[0], price, quantity);
     }
