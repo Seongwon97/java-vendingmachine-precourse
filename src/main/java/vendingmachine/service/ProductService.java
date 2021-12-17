@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static vendingmachine.utils.ErrorMessage.ERROR_PRODUCT_NOT_EXIST;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductService {
@@ -16,14 +17,14 @@ public class ProductService {
         productRepository.initProductInfo(parseAndValid(input));
     }
 
-    public List<Product> parseAndValid(String input) {
+    private List<Product> parseAndValid(String input) {
         List<Product> productList = new ArrayList<>();
         String[] products = input.split(";");
         Arrays.stream(products).forEach(product -> productList.add(validProduct(product)));
         return productList;
     }
 
-    public Product validProduct(String product) {
+    private Product validProduct(String product) {
         checkProductSentence(product);
 
         String[] productInfo = product.substring(1, product.length() - 1).split(",");
@@ -33,6 +34,17 @@ public class ProductService {
         int quantity = checkValidQuantity(productInfo[2]);
         return new Product(productInfo[0], price, quantity);
     }
+
+    public void validPurchaseProduct(String input) {
+        checkProductName(input);
+        for (Product product: productRepository.getProductList()) {
+            if (product.getName().equals(input)) {
+                return;
+            }
+        }
+        throw new IllegalArgumentException(ERROR_PRODUCT_NOT_EXIST);
+    }
+
 
 
 }
