@@ -14,5 +14,4 @@ public class UserChangeService {
     public int getUserChange() {
         return userChangeRepository.getChange();
     }
-
 }

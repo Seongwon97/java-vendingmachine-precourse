@@ -4,13 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 import vendingmachine.domain.Coin;
 import vendingmachine.repository.MachineMoneyRepository;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static vendingmachine.domain.Coin.getAvilableCoinList;
 import static vendingmachine.domain.Coin.getEnumCoin;
-import static vendingmachine.utils.Validator.*;
+import static vendingmachine.utils.Validator.checkValidPrice;
 
 public class MachineMoneyService {
     private static MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
@@ -46,6 +45,4 @@ public class MachineMoneyService {
     public Map<Coin, Integer> getMachineCoinInfo() {
         return machineMoneyRepository.getMachineCoin();
     }
-
-
 }

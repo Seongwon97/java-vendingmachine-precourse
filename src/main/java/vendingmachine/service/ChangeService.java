@@ -15,7 +15,7 @@ public class ChangeService {
         int remainMoney = userChangeRepository.getChange();
         Map<Coin, Integer> machineCoin = machineMoneyRepository.getMachineCoin();
         ChangeDto changeDto = new ChangeDto();
-        for (Coin coin: Coin.getCoinList()) {
+        for (Coin coin : Coin.getCoinList()) {
             int changeCoinNum = findChangeCoin(coin, machineCoin, remainMoney);
             remainMoney -= (coin.getAmount() * changeCoinNum);
             changeDto.addChange(coin, changeCoinNum);
@@ -24,7 +24,7 @@ public class ChangeService {
     }
 
     private int findChangeCoin(Coin coin, Map<Coin, Integer> machineCoin, int remainMoney) {
-        int maxCoinNum = remainMoney/coin.getAmount();
+        int maxCoinNum = remainMoney / coin.getAmount();
         int machineCoinNum = machineCoin.get(coin);
         if (maxCoinNum <= machineCoinNum) {
             return maxCoinNum;

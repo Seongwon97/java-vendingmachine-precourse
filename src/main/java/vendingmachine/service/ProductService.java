@@ -6,9 +6,7 @@ import vendingmachine.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static vendingmachine.utils.ErrorMessage.*;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductService {
@@ -36,5 +34,4 @@ public class ProductService {
         int quantity = checkValidQuantity(productInfo[2]);
         return new Product(productInfo[0], price, quantity);
     }
-
 }

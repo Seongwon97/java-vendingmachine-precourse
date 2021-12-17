@@ -25,5 +25,4 @@ public class UserChangeRepository {
     public void purchase(int productPrice) {
         change -= productPrice;
     }
-
 }

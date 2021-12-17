@@ -45,7 +45,7 @@ public class Validator {
     }
 
     public static void checkProductSentence(String input) {
-        if (input.charAt(0) != '[' || input.charAt(input.length()-1) != ']') {
+        if (input.charAt(0) != '[' || input.charAt(input.length() - 1) != ']') {
             throw new IllegalArgumentException(ERROR_PRODUCT_BRACKET);
         }
     }
@@ -78,5 +78,4 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_PRODUCT_MINIMUN_PRICE);
         }
     }
-
 }

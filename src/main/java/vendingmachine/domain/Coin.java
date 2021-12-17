@@ -41,5 +41,4 @@ public enum Coin {
                 .sequential()
                 .collect(Collectors.toList()).get(0);
     }
-
 }

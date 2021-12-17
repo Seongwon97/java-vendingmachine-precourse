@@ -1,6 +1,5 @@
 package vendingmachine.domain;
 
-import java.util.Collections;
 import java.util.Objects;
 
 public class Product {

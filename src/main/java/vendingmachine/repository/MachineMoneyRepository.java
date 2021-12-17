@@ -3,7 +3,6 @@ package vendingmachine.repository;
 import vendingmachine.domain.Coin;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MachineMoneyRepository {
@@ -27,8 +26,4 @@ public class MachineMoneyRepository {
             this.machineCoin = machineCoin;
         }
     }
-
-
-
-
 }

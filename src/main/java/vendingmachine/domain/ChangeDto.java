@@ -15,10 +15,6 @@ public class ChangeDto {
         change.put(coin, coinNum);
     }
 
-    public Map<Coin, Integer> getChange() {
-        return change;
-    }
-
     public Set<Coin> getChangeKey() {
         return change.keySet();
     }

@@ -50,7 +50,7 @@ public class VendingMachineController {
 
     public void initUserChange() {
         boolean flag = false;
-        while(!flag) {
+        while (!flag) {
             try {
                 String userChange = scanUserInput();
                 userChangeService.saveUserInput(userChange);
@@ -63,7 +63,7 @@ public class VendingMachineController {
 
     public void getPurchase() {
         boolean flag = false;
-        while(!flag) {
+        while (!flag) {
             try {
                 int change = userChangeService.getUserChange();
                 String order = scanPurchase(change);
@@ -80,5 +80,4 @@ public class VendingMachineController {
         printUserChange(userChangeService.getUserChange());
         printFinalChange(changeService.getFinalChange());
     }
-
 }
