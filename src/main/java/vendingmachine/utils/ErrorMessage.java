@@ -9,4 +9,5 @@ public class ErrorMessage {
     public static final String ERROR_PRODUCT_NAME_FRONT_BLANK = "[ERROR] 상품 이름의 앞에 공백이 있습니다.\n";
     public static final String ERROR_PRODUCT_NAME_NONE = "[ERROR] 상품 이름이 입력되지 않았습니다.\n";
     public static final String ERROR_PRODUCT_NOT_EXIST = "[ERROR] 해당 상품은 존재하지 않습니다.\n";
+    public static final String ERROR_PRODUCT_SOLD_OUT = "[ERROR] 해당 상품은 품절입니다.\n";
 }
