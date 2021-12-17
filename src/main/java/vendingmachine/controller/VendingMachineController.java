@@ -3,6 +3,7 @@ package vendingmachine.controller;
 import vendingmachine.service.MachineMoneyService;
 
 import static vendingmachine.view.InputViews.scanMachineMoney;
+import static vendingmachine.view.InputViews.scanProductInfo;
 import static vendingmachine.view.OutputViews.printMachineCoinInfo;
 
 public class VendingMachineController {
@@ -11,13 +12,26 @@ public class VendingMachineController {
     public void initMachineMoney() {
         boolean flag = false;
         while (!flag)
-        try {
-            String money = scanMachineMoney();
-            machineMoneyService.saveMoney(money);
-            flag = true;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+            try {
+                String money = scanMachineMoney();
+                machineMoneyService.saveMoney(money);
+                flag = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         printMachineCoinInfo(machineMoneyService.getMachineCoinInfo());
     }
+
+    public void initProductInfo() {
+        boolean flag = false;
+        while (!flag) {
+            try {
+                String products = scanProductInfo();
+                flag = true;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }

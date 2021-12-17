@@ -16,15 +16,8 @@ public class MachineMoneyService {
     private static MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
 
     public void saveMoney(String input) {
-        int money = checkValidInput(input);
+        int money = checkValidPrice(input);
         machineMoneyRepository.initMachieCoin(saveCoinMap(money));
-    }
-
-    private int checkValidInput(String input) {
-        int money = checkNotInteger(input);
-        checkIsMinusInteger(money);
-        checkDivideTen(money);
-        return money;
     }
 
     private Map<Coin, Integer> saveCoinMap(int money) {
