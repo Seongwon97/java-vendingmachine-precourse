@@ -11,8 +11,8 @@ import static vendingmachine.utils.ErrorMessage.*;
 import static vendingmachine.utils.Validator.checkProductName;
 
 public class PurchaseService {
-    private static ProductRepository productRepository = ProductRepository.getInstance();
-    private static UserChangeRepository userChangeRepository = UserChangeRepository.getInstance();
+    private static final ProductRepository productRepository = ProductRepository.getInstance();
+    private static final UserChangeRepository userChangeRepository = UserChangeRepository.getInstance();
 
     public void validPurchaseProduct(String input, int change) {
         checkProductName(input);

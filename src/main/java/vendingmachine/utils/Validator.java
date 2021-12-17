@@ -3,6 +3,14 @@ package vendingmachine.utils;
 import static vendingmachine.utils.ErrorMessage.*;
 
 public class Validator {
+    public static final char BLANK = ' ';
+    public static final int MININUM_PRICE = 100;
+    public static final int PRODUCT_ITEM_NUM = 3;
+    public static final int MINIMUM_COIN = 10;
+    public static final char PRODUCT_OPEN_BRACKET = '[';
+    public static final char PRODUCT_CLOSE_BRACKET = ']';
+
+
     public static int checkValidPrice(String input) {
         int money = checkNotIntegerPrice(input);
         checkIsMinusInteger(money);
@@ -39,19 +47,20 @@ public class Validator {
     }
 
     public static void checkDivideTen(int input) {
-        if (input % 10 != 0) {
+        if (input % MINIMUM_COIN != 0) {
             throw new IllegalArgumentException(ERROR_DIVIDE_TEN);
         }
     }
 
     public static void checkProductSentence(String input) {
-        if (input.charAt(0) != '[' || input.charAt(input.length() - 1) != ']') {
+        if (input.charAt(0) != PRODUCT_OPEN_BRACKET ||
+                input.charAt(input.length() - 1) != PRODUCT_CLOSE_BRACKET) {
             throw new IllegalArgumentException(ERROR_PRODUCT_BRACKET);
         }
     }
 
     public static void checkProductInfoSize(String[] productInfo) {
-        if (productInfo.length != 3) {
+        if (productInfo.length != PRODUCT_ITEM_NUM) {
             throw new IllegalArgumentException(ERROR_PRODUCT_INFO_SIZE);
         }
     }
@@ -62,7 +71,7 @@ public class Validator {
     }
 
     private static void checkProductNameFrontBlank(String input) {
-        if (input.charAt(0) == ' ') {
+        if (input.charAt(0) == BLANK) {
             throw new IllegalArgumentException(ERROR_PRODUCT_NAME_FRONT_BLANK);
         }
     }
@@ -74,7 +83,7 @@ public class Validator {
     }
 
     public static void checkProcductMinimunPrice(int price) {
-        if (price < 100) {
+        if (price < MININUM_PRICE) {
             throw new IllegalArgumentException(ERROR_PRODUCT_MINIMUN_PRICE);
         }
     }

@@ -11,10 +11,12 @@ public class ChangeService {
     static final MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
     static final UserChangeRepository userChangeRepository = UserChangeRepository.getInstance();
 
+
     public ChangeDto getFinalChange() {
         int remainMoney = userChangeRepository.getChange();
         Map<Coin, Integer> machineCoin = machineMoneyRepository.getMachineCoin();
         ChangeDto changeDto = new ChangeDto();
+
         for (Coin coin : Coin.getCoinList()) {
             int changeCoinNum = findChangeCoin(coin, machineCoin, remainMoney);
             remainMoney -= (coin.getAmount() * changeCoinNum);

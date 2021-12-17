@@ -12,7 +12,7 @@ import static vendingmachine.domain.Coin.getEnumCoin;
 import static vendingmachine.utils.Validator.checkValidPrice;
 
 public class MachineMoneyService {
-    private static MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
+    private static final MachineMoneyRepository machineMoneyRepository = MachineMoneyRepository.getInstance();
 
     public void saveMoney(String input) {
         int money = checkValidPrice(input);

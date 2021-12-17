@@ -1,7 +1,7 @@
 package vendingmachine.repository;
 
 public class UserChangeRepository {
-    private static UserChangeRepository instance = new UserChangeRepository();
+    private static final UserChangeRepository instance = new UserChangeRepository();
     private static int change = 0;
 
     private UserChangeRepository() {
