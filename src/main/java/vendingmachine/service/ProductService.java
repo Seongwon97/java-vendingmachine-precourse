@@ -1,6 +1,7 @@
 package vendingmachine.service;
 
 import vendingmachine.domain.Product;
+import vendingmachine.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,12 +10,10 @@ import java.util.List;
 import static vendingmachine.utils.Validator.*;
 
 public class ProductService {
+    private static ProductRepository productRepository = ProductRepository.getInstance();
 
     public void saveProductInfo(String input) {
-        // 파싱 & 검증
-        parseAndValid(input);
-
-        // 저장하기
+        productRepository.initProductInfo(parseAndValid(input));
     }
 
     public List<Product> parseAndValid(String input) {
