@@ -18,7 +18,6 @@ public class OutputViews {
         for (Coin coin : machineCoin.keySet()) {
             System.out.println(coin.getAmount() + WON + SLASH + machineCoin.get(coin) + COUNT);
         }
-        System.out.println();
     }
 
     public static void printUserChange(int change) {
