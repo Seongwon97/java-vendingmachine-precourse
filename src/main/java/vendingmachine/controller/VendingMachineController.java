@@ -1,19 +1,16 @@
 package vendingmachine.controller;
 
-import vendingmachine.service.MachineMoneyService;
-import vendingmachine.service.ProductService;
-import vendingmachine.service.PurchaseService;
-import vendingmachine.service.UserChangeService;
+import vendingmachine.service.*;
 
 import static vendingmachine.view.InputViews.*;
-import static vendingmachine.view.OutputViews.printMachineCoinInfo;
-import static vendingmachine.view.OutputViews.printUserChange;
+import static vendingmachine.view.OutputViews.*;
 
 public class VendingMachineController {
     private static final MachineMoneyService machineMoneyService = new MachineMoneyService();
     private static final ProductService productService = new ProductService();
     private static final UserChangeService userChangeService = new UserChangeService();
     public static final PurchaseService purchaseService = new PurchaseService();
+    public static final ChangeService changeService = new ChangeService();
 
     public void run() {
         initMachineMoney();
@@ -22,6 +19,7 @@ public class VendingMachineController {
         while (purchaseService.checkContinueToSell()) { // 멈추는 조건 추가
             getPurchase();
         }
+        printChange();
     }
 
     public void initMachineMoney() {
@@ -76,6 +74,11 @@ public class VendingMachineController {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void printChange() {
+        printUserChange(userChangeService.getUserChange());
+        printFinalChange(changeService.getFinalChange());
     }
 
 }
