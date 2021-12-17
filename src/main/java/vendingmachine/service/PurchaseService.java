@@ -50,4 +50,16 @@ public class PurchaseService {
         productRepository.sellProduct(sellProduct);
         userChangeRepository.purchase(sellProduct.getPrice());
     }
+
+    public boolean checkContinueToSell() {
+        int remainMoney = userChangeRepository.getChange();
+        int notSoldOutProductNum = productRepository.getProductList().stream()
+                .filter(product -> product.getQuantity() != 0 && product.getPrice() <= remainMoney)
+                .collect(Collectors.toList()).size();
+
+        if (notSoldOutProductNum == 0) {
+            return false;
+        }
+        return true;
+    }
 }

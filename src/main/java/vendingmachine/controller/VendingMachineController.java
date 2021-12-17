@@ -19,8 +19,8 @@ public class VendingMachineController {
         initMachineMoney();
         initProductInfo();
         initUserChange();
-        while (true) { // 멈추는 조건 추가
-
+        while (purchaseService.checkContinueToSell()) { // 멈추는 조건 추가
+            getPurchase();
         }
     }
 
@@ -61,14 +61,14 @@ public class VendingMachineController {
                 System.out.println(e.getMessage());
             }
         }
-        printUserChange(userChangeService.getUserChange());
     }
 
     public void getPurchase() {
         boolean flag = false;
         while(!flag) {
             try {
-                String order = scanPurchase();
+                int change = userChangeService.getUserChange();
+                String order = scanPurchase(change);
                 purchaseService.validPurchaseProduct(order, userChangeService.getUserChange());
                 purchaseService.sell(order);
                 flag = true;
